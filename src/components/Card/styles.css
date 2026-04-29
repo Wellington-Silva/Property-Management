@@ -1,0 +1,33 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-color: var(--primary-color);
+    width: 260px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #e5e5e5;
+    padding: 12px;
+}
+
+.card-images {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    margin: 10px;
+}
+
+.card-images img {
+    width: 120px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.card .value {
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 8px;
+}

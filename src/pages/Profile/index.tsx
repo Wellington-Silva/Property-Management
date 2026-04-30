@@ -6,15 +6,15 @@ export function Profile() {
         <div className="container-profile">
             <Title title="Perfil" />
             <div className="profile">
-                WS
+                WC
             </div>
-            <div className="data">
-                <p><strong>Nome:</strong> Wellington Silva</p>
-                <p><strong>Email:</strong>
-                    wellington.silva@example.com
-                </p>
-                <p><strong>Telefone:</strong> (11) 98765-4321</p>
-                <p><strong>Documento:</strong> 123.456.789-00</p>
+            <div className="data-profile">
+                <p><strong>Nome:</strong> <span>Wellington Silva</span></p>
+                <p><strong>Email:</strong> <span>wellington.silva@example.com</span></p>
+                <p><strong>Telefone:</strong> <span>(11) 98765-4321</span></p>
+                <p><strong>Nascimento:</strong> <span>12/07/2000</span></p>
+                <button className='button-edit' type='submit'>Editar Perfil</button>
+                <button className='button-logout' type='submit'>Sair da conta</button>
             </div>
         </div>
     );

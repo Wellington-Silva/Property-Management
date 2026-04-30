@@ -4,8 +4,8 @@
     align-items: center;
     min-height: calc(100vh - 70px); 
     padding: 20px;
-    box-sizing: border-box;
     margin-top: 20px;
+    box-sizing: border-box;
 }
 
 .login-form {
@@ -15,7 +15,6 @@
     border-radius: 16px;
     padding: 40px;
     box-shadow: 0 10px 30px rgba(11, 39, 99, 0.5);
-    margin-bottom: 10px;
     gap: 0;
     animation: fadeInScale 0.4s ease-out;
 }

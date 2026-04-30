@@ -1,6 +1,8 @@
 import './App.css';
 import { Home } from './pages/Home';
 import { Login } from './pages/Login';
+import { Profile } from './pages/Profile';
+import { Register } from './pages/Register';
 import { Footer } from './components/Footer';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
@@ -23,12 +25,11 @@ function App() {
                 <main className='main-content'>
                     <Routes>
                         <Route path="/" element={<Login />} />
-                        <Route path="/register" />
+                        <Route path="/register" element={<Register />} />
                         <Route path="/home" element={<Home />} />
-                        <Route path="/profile" />
+                        <Route path="/profile" element={<Profile />}/>
                     </Routes>
                 </main>
-
             </BrowserRouter>
             <Footer />
         </div>

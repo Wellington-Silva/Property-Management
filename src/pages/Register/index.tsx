@@ -11,6 +11,12 @@ export function Register() {
                 <Label htmlFor="name">Nome</Label>
                 <Input type="text" id="name" name="name" placeholder="Digite seu nome completo" />
 
+                <Label htmlFor="phone">Telefone</Label>
+                <Input type="text" id="phone" name="phone" placeholder="Digite seu telefone" />
+
+                <Label htmlFor="birthDate">Data de Nascimento</Label>
+                <Input type="date" id="birthDate" name="birthDate" />
+
                 <Label htmlFor="email">Email</Label>
                 <Input type="email" id="email" name="email" placeholder="Digite seu email" />
 

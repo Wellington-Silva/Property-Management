@@ -14,7 +14,8 @@
     display: flex;
     gap: 8px;
     overflow-x: auto;
-    margin: 10px;
+    scrollbar-width: none;
+    margin: 5px;
 }
 
 .card-images img {

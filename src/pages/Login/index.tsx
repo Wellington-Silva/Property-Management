@@ -1,26 +1,43 @@
 import './styles.css';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { Title } from '../../components/Title';
 import { Input } from '../../components/Input';
 import { Label } from '../../components/Label';
 import { Button } from '../../components/Button';
 
-export function Login() {
+type LoginTypes = {
+    email: string;
+    password: string;
+};
 
-    type LoginTypes = {
-        email: string;
-        password: string;
-    };
+interface LoginProps {
+    onLoginSubmit: (data: LoginTypes) => Promise<boolean>;
+}
+
+export function Login({ onLoginSubmit }: LoginProps) {
+    const navigate = useNavigate();
 
     const {
         register,
-        formState: { errors }
+        handleSubmit,
+        formState: { errors, isSubmitting }
     } = useForm<LoginTypes>();
+
+    const onSubmit = async (data: LoginTypes) => {
+        const isOk = await onLoginSubmit(data);
+        if (isOk) {
+            console.log("Login realizado com sucesso!");
+            navigate('/profile');
+        } else {
+            alert("E-mail ou senha incorretos.");
+        }
+    };
 
     return (
         <div className='container-login'>
             <Title title='Login' />
-            <form className='login-form'>
+            <form className='login-form' onSubmit={handleSubmit(onSubmit)}>
                 <Label htmlFor='email'>E-mail</Label>
                 <Input
                     type='email'
@@ -53,7 +70,10 @@ export function Login() {
                 />
                 {errors.password && <span className="error-message">{errors.password.message}</span>}
 
-                <Button name='Entrar' type='submit' />
+                <Button
+                    name={isSubmitting ? 'Entrando...' : 'Entrar'} 
+                    type='submit' 
+                />
             </form>
         </div >
     );

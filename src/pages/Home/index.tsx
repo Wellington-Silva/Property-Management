@@ -1,8 +1,28 @@
 import './styles.css';
+import Modal from 'react-modal';
+import { useState } from 'react';
 import { Card } from '../../components/Card';
+import { Label } from '../../components/Label';
+import { Input } from '../../components/Input';
+import { Button } from '../../components/Button';
 import { Title } from '../../components/Title';
+import { useNavigate } from 'react-router-dom';
+
+Modal.setAppElement('#root');
 
 export function Home() {
+    const [isOpenModal, setIsOpenModal] = useState(false);
+
+    const navigate = useNavigate();
+
+    function handleOpenModal() {
+        setIsOpenModal(true);
+    }
+
+    function handleCloseModal() {
+        setIsOpenModal(false);
+    }
+
     return (
         <div className="container">
             <Title title='Meus Imóveis' />
@@ -29,6 +49,34 @@ export function Home() {
                         value={2158}
                     />
                 </div>
+                <button className='btn-add' type="button" onClick={handleOpenModal}>
+                    +
+                </button>
+                <Modal
+                    isOpen={isOpenModal}
+                    onRequestClose={handleCloseModal}
+                    contentLabel="Adicionar Imóvel"
+                    className="modal-add-property"
+                    overlayClassName="overlay"
+                >
+                    <button className='closeModal' onClick={handleCloseModal}>X</button>
+
+                    <Title title="Adicionar Imóvel" />
+
+                    <Label htmlFor="name">Nome</Label>
+                    <Input id="name" name="name" placeholder="Digite o nome do imóvel" />
+
+                    <Label htmlFor="description">Descrição</Label>
+                    <Input id="description" name="description" placeholder="Digite a descrição do imóvel" />
+
+                    <Label htmlFor="value">Valor</Label>
+                    <Input id="value" name="value" placeholder="Digite o valor do imóvel" />
+
+                    <Label htmlFor='photo'>Foto</Label>
+                    <Input id="photo" name="photo" type="file" />
+
+                    <Button type="submit" name="Cadastrar imóvel" />
+                </Modal>
             </div>
         </div>
     );

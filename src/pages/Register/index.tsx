@@ -29,7 +29,7 @@ export function Register({ onRegisterSubmit } : { onRegisterSubmit: (data: userT
 
     return (
         <div className="container-register">
-            <Title title="Registrar" />
+            <Title title="Criar conta" />
             <form className='form-data' onSubmit={handleSubmit(onSubmit)}>
                 <Label htmlFor="name">Nome</Label>
                 <Input 

@@ -4,16 +4,13 @@ import { useState } from 'react';
 import { Card } from '../../components/Card';
 import { Label } from '../../components/Label';
 import { Input } from '../../components/Input';
-import { Button } from '../../components/Button';
 import { Title } from '../../components/Title';
-import { useNavigate } from 'react-router-dom';
+import { Button } from '../../components/Button';
 
 Modal.setAppElement('#root');
 
 export function Home() {
     const [isOpenModal, setIsOpenModal] = useState(false);
-
-    const navigate = useNavigate();
 
     function handleOpenModal() {
         setIsOpenModal(true);

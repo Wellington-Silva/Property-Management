@@ -28,21 +28,27 @@ export function Home() {
                 <p className='description'>Aqui estão listados os imóveis que você possui.</p>
                 <div className="houses-list">
                     <Card
+                        id="0"
                         imagesUrl={['/Casa-de-Praia-1.jpg', '/casa-de-praia-2.jpg']}
                         title="Casa na Praia"
                         description="Casa de 3 quartos localizada na praia, ideal para férias."
+                        shortAddress="Praia da Costa, 123"
                         value={2158}
                     />
                     <Card
+                        id="1"
                         imagesUrl={['/Apartamento-1.jpg', '/Apartamento-2.jpg']}
                         title="Apartamento no Centro"
                         description="Apartamento moderno de 2 quartos no centro da cidade."
+                        shortAddress="Av. Paulista, 1000"
                         value={2158}
                     />
                     <Card
+                        id="2"
                         imagesUrl={['/Casa-Sitio.jpg']}
                         title="Sítio Rural"
                         description="Sítio com 5 hectares, perfeito para quem gosta de natureza."
+                        shortAddress="Rua das Flores, 123"
                         value={2158}
                     />
                 </div>

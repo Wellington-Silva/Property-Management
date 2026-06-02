@@ -7,11 +7,13 @@ import { Profile } from './pages/Profile';
 import { apiFetch } from './services/api';
 import { Register } from './pages/Register';
 import { Footer } from './components/Footer';
+import { PropertyDetails } from './pages/PropertyDetails';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
 function App() {
     const [user, setUser] = useState<any>(null);
     const [properties, setProperties] = useState<any[]>([]);
+
 
     useEffect(() => {
         const session = localStorage.getItem('user_session');
@@ -101,6 +103,7 @@ function App() {
                         <Route path="/register" element={<Register onRegisterSubmit={handleRegisterUser} />} />
                         <Route path="/home" element={<Home />} />
                         <Route path="/profile" element={<Profile />}/>
+                        <Route path="/property-details/:id" element={<PropertyDetails />} />
                     </Routes>
                 </main>
             </BrowserRouter>

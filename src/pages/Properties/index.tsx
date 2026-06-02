@@ -17,6 +17,9 @@ export function Properties() {
                 <Label htmlFor="description">Descrição</Label>
                 <Input id="description" name="description" placeholder="Digite a descrição do imóvel" />
 
+                <Label htmlFor="shortAddress">Endereço</Label>
+                <Input id="shortAddress" name="shortAddress" placeholder="Digite o endereço do imóvel" />
+
                 <Label htmlFor="value">Valor</Label>
                 <Input id="value" name="value" placeholder="Digite o valor do imóvel" />
 

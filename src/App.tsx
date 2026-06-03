@@ -82,6 +82,23 @@ function App() {
         }
     };
 
+    const handleDeleteProperty = async (id: string) => {
+        if (!window.confirm("Tem certeza que deseja excluir este imóvel?")) return;
+
+        try {
+            await apiFetch(`/properties/${id}`, {
+                method: "DELETE"
+            });
+
+            // Atualiza o estado local removendo o imóvel da lista
+            setProperties(prevProperties => prevProperties.filter(property => (property.id || property._id) !== id));
+
+        } catch (error) {
+            console.error("Erro ao deletar imóvel:", error);
+            alert("Não foi possível excluir o imóvel no servidor.");
+        }
+    };
+
     return (
         <div className='app-layout'>
             <BrowserRouter>
@@ -101,7 +118,7 @@ function App() {
                     <Routes>
                         <Route path="/" element={<Login onLoginSubmit={handleLoginUser} />} />
                         <Route path="/register" element={<Register onRegisterSubmit={handleRegisterUser} />} />
-                        <Route path="/home" element={<Home />} />
+                        <Route path="/home" element={<Home onDelete={handleDeleteProperty} />} />
                         <Route path="/profile" element={<Profile />}/>
                         <Route path="/property-details/:id" element={<PropertyDetails />} />
                     </Routes>

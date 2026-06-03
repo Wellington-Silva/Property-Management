@@ -1,6 +1,7 @@
 .card {
     display: flex;
     flex-direction: column;
+    position: relative;
     justify-content: flex-end;
     background-color: var(--primary-color);
     width: 260px;
@@ -53,7 +54,6 @@
     font-weight: bold;
 }
 
-/* OVERLAY DOS MODAIS */
 .overlay {
     position: fixed;
     top: 0;
@@ -70,7 +70,6 @@
     z-index: 1000;
 }
 
-/* MODAL DETALHES E MODAL INQUILINO */
 .modal-details,
 .modal-add-tenant {
     position: relative;
@@ -90,7 +89,6 @@
     overflow-y: auto;
 }
 
-/* BOTÃO FECHAR */
 .modal-details .closeModal,
 .modal-add-tenant .closeModal {
     position: absolute;
@@ -106,7 +104,6 @@
     padding: 10px;
 }
 
-/* FORMULÁRIO */
 .form-add-tenant {
     display: flex;
     flex-direction: column;
@@ -116,4 +113,45 @@
 
 .form-add-tenant label {
     color: #333;
+}
+
+.rented {
+    font-weight: bold;
+}
+
+.rented-true {
+    color: orange;
+}
+
+.rented-false {
+    color: green;
+}
+
+.button-icon-delete {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    
+    background: transparent;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-icon-delete:hover {
+    background-color: #fee2e2;
+}
+
+.button-icon-delete:hover .icon-trash {
+    color: #d93025;
+}
+
+.icon-trash {
+    color: #b0b0b0;
 }

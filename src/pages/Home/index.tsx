@@ -9,7 +9,7 @@ import { Button } from '../../components/Button';
 
 Modal.setAppElement('#root');
 
-export function Home() {
+export function Home({ onDelete }: { onDelete: (id: string) => void }) {
     const [isOpenModal, setIsOpenModal] = useState(false);
 
     function handleOpenModal() {
@@ -34,6 +34,8 @@ export function Home() {
                         description="Casa de 3 quartos localizada na praia, ideal para férias."
                         shortAddress="Praia da Costa, 123"
                         value={2158}
+                        isRented={false}
+                        onDelete={() => onDelete("0")}
                     />
                     <Card
                         id="1"
@@ -42,6 +44,8 @@ export function Home() {
                         description="Apartamento moderno de 2 quartos no centro da cidade."
                         shortAddress="Av. Paulista, 1000"
                         value={2158}
+                        isRented={true}
+                        onDelete={() => onDelete("1")}
                     />
                     <Card
                         id="2"
@@ -50,6 +54,8 @@ export function Home() {
                         description="Sítio com 5 hectares, perfeito para quem gosta de natureza."
                         shortAddress="Rua das Flores, 123"
                         value={2158}
+                        isRented={false}
+                        onDelete={() => onDelete("2")}
                     />
                 </div>
                 <button className='btn-add' type="button" onClick={handleOpenModal}>

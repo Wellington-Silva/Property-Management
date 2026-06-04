@@ -5,16 +5,6 @@ import { useEffect } from 'react';
 import { apiFetch } from '../../services/api';
 import { useState } from 'react';
 
-interface LeaseProps {
-    id: string;
-    propertyId: string;
-    rentAmount: number;
-    startDate: string;
-    endDate: string;
-    tenantName: string;
-    tenantContact: string;
-}
-
 export function Lease() {
     const { id } = useParams<{ id: string }>();
     const [lease, setLease] = useState<any>(null);
@@ -30,7 +20,7 @@ export function Lease() {
             }
 
         }
-        
+
         if (id) {
             loadLease();
         }

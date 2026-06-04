@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { Home } from './pages/Home';
 import { Login } from './pages/Login';
+import { Lease } from './pages/Lease';
 import { Profile } from './pages/Profile';
 import { apiFetch } from './services/api';
 import { Register } from './pages/Register';
@@ -13,7 +14,6 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 function App() {
     const [user, setUser] = useState<any>(null);
     const [properties, setProperties] = useState<any[]>([]);
-
 
     useEffect(() => {
         const session = localStorage.getItem('user_session');
@@ -121,6 +121,7 @@ function App() {
                         <Route path="/home" element={<Home onDelete={handleDeleteProperty} />} />
                         <Route path="/profile" element={<Profile />}/>
                         <Route path="/property-details/:id" element={<PropertyDetails />} />
+                        <Route path="/lease/:id" element={<Lease />} />
                     </Routes>
                 </main>
             </BrowserRouter>

@@ -15,6 +15,7 @@ function App() {
     const [user, setUser] = useState<any>(null);
     const [properties, setProperties] = useState<any[]>([]);
 
+    // Load user session from localStorage on app initialization
     useEffect(() => {
         const session = localStorage.getItem('user_session');
         if (session) {
@@ -45,6 +46,8 @@ function App() {
         loadProperties();
     }, [user]);
 
+
+    // AUTHENTICATION HANDLERS
     const handleLoginUser = async (loginData: { email: string; password: string }) => {
         try {
             const response = await apiFetch<any>('/auth/login', {
@@ -63,6 +66,16 @@ function App() {
         return false;
     };
 
+    const handleLogout = async () => {
+        try {
+            localStorage.removeItem("user_session");
+            setUser(null);
+        } catch (error) {
+            alert("Não foi possível fazer o logout");
+        }
+    };
+
+    // USER MANAGEMENT HANDLERS
     const handleRegisterUser = async (userRegistered: any) => {
         try {
             const response = await apiFetch<any>("/auth/register", {
@@ -82,6 +95,28 @@ function App() {
         }
     };
 
+    const handleUpdateUser = async (userData: any) => {
+        try {
+            const response = await apiFetch<any>(`/users/${userData.id}`, {
+                method: "PUT",
+                body: JSON.stringify(userData)
+            });
+            setUser(response.user || response);
+
+            const session = JSON.parse(localStorage.getItem('user_session') || '{}');
+            const newSession = {
+                ...session,
+                user: response.user || response
+            };
+
+            localStorage.setItem('user_session', JSON.stringify(newSession));
+            alert("Perfil atualizado!");
+        } catch (error) {
+            alert("Não foi possível editar dados do usuário logado");
+        }
+    };
+
+    // PROPERTY MANAGEMENT HANDLERS
     const handleDeleteProperty = async (id: string) => {
         if (!window.confirm("Tem certeza que deseja excluir este imóvel?")) return;
 
@@ -119,7 +154,7 @@ function App() {
                         <Route path="/" element={<Login onLoginSubmit={handleLoginUser} />} />
                         <Route path="/register" element={<Register onRegisterSubmit={handleRegisterUser} />} />
                         <Route path="/home" element={<Home onDelete={handleDeleteProperty} />} />
-                        <Route path="/profile" element={<Profile />}/>
+                        <Route path="/profile" element={<Profile user={user} onLogout={handleLogout} onUpdate={handleUpdateUser} />} />
                         <Route path="/property-details/:id" element={<PropertyDetails />} />
                         <Route path="/lease/:id" element={<Lease />} />
                     </Routes>
